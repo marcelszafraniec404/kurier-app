@@ -1,0 +1,314 @@
+import tkinter as tk
+import sqlite3
+
+addresses = []
+
+
+conn = sqlite3.connect("courier.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS addresses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    city TEXT,
+    postal_code TEXT,
+    street TEXT,
+    building_number TEXT
+)
+""")
+
+conn.commit()
+
+def show_package_count():
+    count_label.config(text=f"Liczba paczek: {len(addresses)}")
+
+
+def add_address():
+
+    city = city_entry.get()
+    postal = postal_entry.get()
+    street = street_entry.get()
+    number = number_entry.get()
+
+    if city and postal and street and number:
+
+        full_address = f"{postal} {city}, {street} {number}"
+
+        addresses.append(full_address)
+
+        listbox.insert(tk.END, full_address)
+
+        # zapis do bazy danych
+        cursor.execute("""
+        INSERT INTO addresses (city, postal_code, street, building_number)
+        VALUES (?, ?, ?, ?)
+        """, (city, postal, street, number))
+
+        conn.commit()
+
+        # czyszczenie pól
+        city_entry.delete(0, tk.END)
+        postal_entry.delete(0, tk.END)
+        street_entry.delete(0, tk.END)
+        number_entry.delete(0, tk.END)
+
+        show_package_count()
+
+
+def generate_route():
+
+    listbox.delete(0, tk.END)
+
+    sorted_addresses = sorted(addresses)
+
+    for index, addr in enumerate(sorted_addresses, start=1):
+
+        listbox.insert(tk.END, f"{index}. {addr}")
+
+
+def delete_address():
+
+    selected = listbox.curselection()
+
+    if selected:
+
+        index = selected[0]
+
+        listbox.delete(index)
+
+        addresses.pop(index)
+
+        show_package_count()
+
+
+root = tk.Tk()
+
+root.title("Aplikacja Kuriera")
+
+root.geometry("850x850")
+
+root.resizable(False, False)
+
+root.configure(bg="#1E3A5F")
+
+title_label = tk.Label(
+    root,
+    text="System Planowania Tras Kuriera",
+    font=("Arial", 24, "bold"),
+    bg="#1E3A5F",
+    fg="#FFD447"
+)
+
+title_label.pack(pady=20)
+
+
+form_frame = tk.Frame(
+    root,
+    bg="#2C4E73",
+    padx=20,
+    pady=20
+)
+
+form_frame.pack(pady=10)
+
+city_label = tk.Label(
+    form_frame,
+    text="Miasto",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 11, "bold")
+)
+
+city_label.pack(pady=5)
+
+city_entry = tk.Entry(
+    form_frame,
+    width=40,
+    font=("Arial", 11),
+    bd=2
+)
+
+city_entry.pack(pady=5)
+
+
+postal_label = tk.Label(
+    form_frame,
+    text="Kod pocztowy",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 11, "bold")
+)
+
+postal_label.pack(pady=5)
+
+postal_entry = tk.Entry(
+    form_frame,
+    width=40,
+    font=("Arial", 11),
+    bd=2
+)
+
+postal_entry.pack(pady=5)
+
+
+street_label = tk.Label(
+    form_frame,
+    text="Ulica",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 11, "bold")
+)
+
+street_label.pack(pady=5)
+
+street_entry = tk.Entry(
+    form_frame,
+    width=40,
+    font=("Arial", 11),
+    bd=2
+)
+
+street_entry.pack(pady=5)
+
+
+number_label = tk.Label(
+    form_frame,
+    text="Numer budynku",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 11, "bold")
+)
+
+number_label.pack(pady=5)
+
+number_entry = tk.Entry(
+    form_frame,
+    width=40,
+    font=("Arial", 11),
+    bd=2
+)
+
+number_entry.pack(pady=5)
+
+
+button_frame = tk.Frame(root, bg="#1E3A5F")
+
+button_frame.pack(pady=20)
+
+add_button = tk.Button(
+    button_frame,
+    text="Dodaj adres",
+    command=add_address,
+    bg="#FFD447",
+    fg="black",
+    font=("Arial", 11, "bold"),
+    width=20,
+    height=2,
+    bd=0
+)
+
+add_button.pack(
+    side=tk.LEFT,
+    padx=10
+)
+
+
+delete_button = tk.Button(
+    button_frame,
+    text="Usuń adres",
+    command=delete_address,
+    bg="#FFD447",
+    fg="black",
+    font=("Arial", 11, "bold"),
+    width=20,
+    height=2,
+    bd=0
+)
+
+delete_button.pack(
+    side=tk.LEFT,
+    padx=10
+)
+
+
+route_label = tk.Label(
+    root,
+    text="Plan trasy kuriera",
+    bg="#1E3A5F",
+    fg="white",
+    font=("Arial", 14, "bold")
+)
+
+route_label.pack(pady=10)
+
+
+list_frame = tk.Frame(root, bg="#1E3A5F")
+
+list_frame.pack(pady=10)
+
+scrollbar = tk.Scrollbar(list_frame)
+
+listbox = tk.Listbox(
+    list_frame,
+    width=60,
+    height=5,
+    yscrollcommand=scrollbar.set,
+    font=("Arial", 10),
+    bd=3,
+    justify="center"
+)
+
+scrollbar.config(command=listbox.yview)
+
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+listbox.pack(side=tk.LEFT)
+
+
+count_label = tk.Label(
+    root,
+    text="Liczba paczek: 0",
+    bg="#1E3A5F",
+    fg="white",
+    font=("Arial", 12, "bold")
+)
+
+count_label.pack(pady=15)
+
+
+cursor.execute("""
+SELECT city, postal_code, street, building_number
+FROM addresses
+""")
+
+saved_addresses = cursor.fetchall()
+
+for address in saved_addresses:
+
+    city, postal, street, number = address
+
+    full_address = f"{postal} {city}, {street} {number}"
+
+    addresses.append(full_address)
+
+    listbox.insert(tk.END, full_address)
+
+show_package_count()
+
+
+route_button = tk.Button(
+    root,
+    text="Generuj trasę",
+    command=generate_route,
+    bg="#FFD447",
+    fg="black",
+    font=("Arial", 12, "bold"),
+    width=25,
+    height=2,
+    bd=0
+)
+
+route_button.pack(pady=20)
+
+
+root.mainloop()
