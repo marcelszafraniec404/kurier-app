@@ -141,6 +141,19 @@ def show_map():
     mapa.save("mapa_trasy.html")
     webbrowser.open("mapa_trasy.html")
 
+def new_route():
+
+    addresses.clear()
+
+    listbox.delete(0, tk.END)
+
+    cursor.execute("DELETE FROM addresses")
+
+    conn.commit()
+
+    show_package_count()
+
+
 root = tk.Tk()
 
 root.title("Aplikacja Kuriera")
@@ -303,6 +316,23 @@ map_button = tk.Button(
 )
 
 map_button.pack(
+    side=tk.LEFT,
+    padx=10
+)
+
+new_route_button = tk.Button(
+    button_frame,
+    text="Nowa trasa",
+    command=new_route,
+    bg="#FFD447",
+    fg="black",
+    font=("Arial", 11, "bold"),
+    width=20,
+    height=2,
+    bd=0
+)
+
+new_route_button.pack(
     side=tk.LEFT,
     padx=10
 )
