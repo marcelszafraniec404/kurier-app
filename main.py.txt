@@ -88,7 +88,6 @@ def delete_address():
 
 
 def show_map():
-
     geolocator = Nominatim(user_agent="courier_app")
 
     mapa = folium.Map(
@@ -99,7 +98,6 @@ def show_map():
     route_points = []
 
     for index, address in enumerate(addresses, start=1):
-
         try:
             location = geolocator.geocode(address)
 
@@ -110,10 +108,27 @@ def show_map():
                 folium.Marker(
                     point,
                     popup=f"{index}. {address}",
-                    tooltip=f"Punkt {index}"
+                    tooltip=f"Punkt {index}: {address}",
+                    icon=folium.DivIcon(
+                        html=f"""
+                        <div style="
+                            background-color: #FFD447;
+                            color: black;
+                            border: 2px solid black;
+                            border-radius: 50%;
+                            width: 28px;
+                            height: 28px;
+                            text-align: center;
+                            line-height: 28px;
+                            font-weight: bold;
+                            font-size: 14px;">
+                            {index}
+                        </div>
+                        """
+                    )
                 ).add_to(mapa)
 
-        except:
+        except Exception:
             pass
 
     if len(route_points) >= 2:
@@ -124,9 +139,7 @@ def show_map():
         ).add_to(mapa)
 
     mapa.save("mapa_trasy.html")
-
     webbrowser.open("mapa_trasy.html")
-
 
 root = tk.Tk()
 
