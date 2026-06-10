@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_9f47ae77b5e42ba7463b17c553de9603 {
+                #map_f71596a6c5db360611f1e6d997b9c575 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,14 +54,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_9f47ae77b5e42ba7463b17c553de9603" ></div>
+            <div class="folium-map" id="map_f71596a6c5db360611f1e6d997b9c575" ></div>
         
 </body>
 <script>
     
     
-            var map_9f47ae77b5e42ba7463b17c553de9603 = L.map(
-                "map_9f47ae77b5e42ba7463b17c553de9603",
+            var map_f71596a6c5db360611f1e6d997b9c575 = L.map(
+                "map_f71596a6c5db360611f1e6d997b9c575",
                 {
                     center: [52.2297, 21.0122],
                     crs: L.CRS.EPSG3857,
@@ -78,7 +78,7 @@
 
         
     
-            var tile_layer_a4a1cab124b2be6d72facc082d3ec46d = L.tileLayer(
+            var tile_layer_953b31435a342ebe3f19a42813856af0 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -95,55 +95,149 @@
             );
         
     
-            tile_layer_a4a1cab124b2be6d72facc082d3ec46d.addTo(map_9f47ae77b5e42ba7463b17c553de9603);
+            tile_layer_953b31435a342ebe3f19a42813856af0.addTo(map_f71596a6c5db360611f1e6d997b9c575);
         
     
-            var marker_f7a36ca5cd0e72d908633f64937d0a02 = L.marker(
-                [52.2142913, 21.020957],
+            var marker_a142049fdcc5c137acfeb679221501ec = L.marker(
+                [54.349592, 18.5828204],
                 {
 }
-            ).addTo(map_9f47ae77b5e42ba7463b17c553de9603);
+            ).addTo(map_f71596a6c5db360611f1e6d997b9c575);
         
     
-        var popup_3c067e2b112edd422cc50b072c6f60cb = L.popup({
+        var popup_a47798c50d7f8d5e6b1358e4d2617a57 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_8c83c01b4f137bf130401234d045ed9c = $(`<div id="html_8c83c01b4f137bf130401234d045ed9c" style="width: 100.0%; height: 100.0%;">00-001 Warszawa, Marszałkowska 1</div>`)[0];
-                popup_3c067e2b112edd422cc50b072c6f60cb.setContent(html_8c83c01b4f137bf130401234d045ed9c);
+                var html_93cb545bfe94fc4019a89c9df818f953 = $(`<div id="html_93cb545bfe94fc4019a89c9df818f953" style="width: 100.0%; height: 100.0%;">1. 80-126 Gdańsk, Piekarnicza 21</div>`)[0];
+                popup_a47798c50d7f8d5e6b1358e4d2617a57.setContent(html_93cb545bfe94fc4019a89c9df818f953);
             
         
 
-        marker_f7a36ca5cd0e72d908633f64937d0a02.bindPopup(popup_3c067e2b112edd422cc50b072c6f60cb)
+        marker_a142049fdcc5c137acfeb679221501ec.bindPopup(popup_a47798c50d7f8d5e6b1358e4d2617a57)
         ;
 
         
     
     
-            var marker_7b1268392a7f713c945f838ef7a0f460 = L.marker(
-                [52.260268, 20.995624],
+            marker_a142049fdcc5c137acfeb679221501ec.bindTooltip(
+                `<div>
+                     Punkt 1
+                 </div>`,
                 {
+  "sticky": true,
 }
-            ).addTo(map_9f47ae77b5e42ba7463b17c553de9603);
+            );
         
     
-        var popup_8e485a978441f05177677c8715e99a5f = L.popup({
+            var marker_dab31883ec9c7eee48204bd23962cce3 = L.marker(
+                [54.331361, 18.5617877],
+                {
+}
+            ).addTo(map_f71596a6c5db360611f1e6d997b9c575);
+        
+    
+        var popup_d6d6e8536618d3fd59b90ce75ee9b8f2 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_f539ab8832a943900f29732cd6fa004d = $(`<div id="html_f539ab8832a943900f29732cd6fa004d" style="width: 100.0%; height: 100.0%;">00-001 Warszawa, Mickiewicza 4</div>`)[0];
-                popup_8e485a978441f05177677c8715e99a5f.setContent(html_f539ab8832a943900f29732cd6fa004d);
+                var html_5f43e50d6f309b5be9523b271467a183 = $(`<div id="html_5f43e50d6f309b5be9523b271467a183" style="width: 100.0%; height: 100.0%;">2. 80-175 Gdańsk, Jabłoniowa  14</div>`)[0];
+                popup_d6d6e8536618d3fd59b90ce75ee9b8f2.setContent(html_5f43e50d6f309b5be9523b271467a183);
             
         
 
-        marker_7b1268392a7f713c945f838ef7a0f460.bindPopup(popup_8e485a978441f05177677c8715e99a5f)
+        marker_dab31883ec9c7eee48204bd23962cce3.bindPopup(popup_d6d6e8536618d3fd59b90ce75ee9b8f2)
         ;
 
         
     
+    
+            marker_dab31883ec9c7eee48204bd23962cce3.bindTooltip(
+                `<div>
+                     Punkt 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_537c392295469dd848a3ad1bafcbe8df = L.marker(
+                [54.4013348, 18.562181],
+                {
+}
+            ).addTo(map_f71596a6c5db360611f1e6d997b9c575);
+        
+    
+        var popup_9440e61d1bf4ace37cfe938c0e1f489c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3eb4a82c764311945f6802f05000d7da = $(`<div id="html_3eb4a82c764311945f6802f05000d7da" style="width: 100.0%; height: 100.0%;">3. 80-308 Gdańsk, Polanki 32</div>`)[0];
+                popup_9440e61d1bf4ace37cfe938c0e1f489c.setContent(html_3eb4a82c764311945f6802f05000d7da);
+            
+        
+
+        marker_537c392295469dd848a3ad1bafcbe8df.bindPopup(popup_9440e61d1bf4ace37cfe938c0e1f489c)
+        ;
+
+        
+    
+    
+            marker_537c392295469dd848a3ad1bafcbe8df.bindTooltip(
+                `<div>
+                     Punkt 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4e3f92627a5739418f789b6f6d8016b3 = L.marker(
+                [54.339963, 18.8951304],
+                {
+}
+            ).addTo(map_f71596a6c5db360611f1e6d997b9c575);
+        
+    
+        var popup_01026a06b194e7fbad1be98c13e786ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c3b443e45ffd86981fd65af7d4ccf616 = $(`<div id="html_c3b443e45ffd86981fd65af7d4ccf616" style="width: 100.0%; height: 100.0%;">4. 80-690 Gdańsk, Frezjowa 8</div>`)[0];
+                popup_01026a06b194e7fbad1be98c13e786ac.setContent(html_c3b443e45ffd86981fd65af7d4ccf616);
+            
+        
+
+        marker_4e3f92627a5739418f789b6f6d8016b3.bindPopup(popup_01026a06b194e7fbad1be98c13e786ac)
+        ;
+
+        
+    
+    
+            marker_4e3f92627a5739418f789b6f6d8016b3.bindTooltip(
+                `<div>
+                     Punkt 4
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_98d6f24199977966937e6d91668c9817 = L.polyline(
+                [[54.349592, 18.5828204], [54.331361, 18.5617877], [54.4013348, 18.562181], [54.339963, 18.8951304]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_f71596a6c5db360611f1e6d997b9c575);
+        
 </script>
 </html>

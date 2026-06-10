@@ -96,25 +96,37 @@ def show_map():
         zoom_start=11
     )
 
-    for address in addresses:
+    route_points = []
+
+    for index, address in enumerate(addresses, start=1):
 
         try:
-
             location = geolocator.geocode(address)
 
             if location:
+                point = [location.latitude, location.longitude]
+                route_points.append(point)
 
                 folium.Marker(
-                    [location.latitude, location.longitude],
-                    popup=address
+                    point,
+                    popup=f"{index}. {address}",
+                    tooltip=f"Punkt {index}"
                 ).add_to(mapa)
 
         except:
             pass
 
+    if len(route_points) >= 2:
+        folium.PolyLine(
+            route_points,
+            weight=5,
+            opacity=0.8
+        ).add_to(mapa)
+
     mapa.save("mapa_trasy.html")
 
     webbrowser.open("mapa_trasy.html")
+
 
 root = tk.Tk()
 
