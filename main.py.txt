@@ -161,6 +161,12 @@ def generate_route():
 
     set_status("Trasa została wygenerowana")
 
+def refresh_listbox():
+    listbox.delete(0, tk.END)
+
+    for index, addr in enumerate(addresses, start=1):
+        listbox.insert(tk.END, f"{index}. {addr}")
+
 def delete_address():
 
     selected = listbox.curselection()
@@ -169,12 +175,23 @@ def delete_address():
 
         index = selected[0]
 
-        listbox.delete(index)
+        removed_address = addresses[index]
 
         addresses.pop(index)
 
+        cursor.execute("""
+        DELETE FROM addresses
+        WHERE postal_code || ' ' || city || ', ' || street || ' ' || building_number = ?
+        """, (removed_address,))
+
+        conn.commit()
+
+        refresh_listbox()
         show_package_count()
         set_status("Adres został usunięty")
+
+    else:
+        set_status("Zaznacz adres do usunięcia")
 
 def show_map():
     geolocator = Nominatim(user_agent="courier_app")
@@ -287,16 +304,20 @@ def set_status(message):
 def set_start_address():
     global start_address
 
-    start_address = start_entry.get().strip()
+    city = start_city_entry.get()
+    postal = start_postal_entry.get()
+    street = start_street_entry.get()
+    number = start_number_entry.get()
 
-    if start_address:
+    if city and postal and street and number:
+        start_address = f"{postal} {city}, {street} {number}"
         start_window.destroy()
         root.deiconify()
         set_status("Adres startowy ustawiony")
     else:
         messagebox.showwarning(
-            "Brak adresu",
-            "Podaj adres startowy kuriera."
+            "Brak danych",
+            "Uzupełnij wszystkie pola adresu startowego."
         )
 
 root = tk.Tk()
@@ -313,7 +334,7 @@ root.withdraw()
 
 start_window = tk.Toplevel(root)
 start_window.title("Witaj kurierze")
-start_window.geometry("400x220")
+start_window.geometry("420x430")
 start_window.configure(bg="#1E3A5F")
 start_window.grab_set()
 
@@ -328,19 +349,84 @@ start_title.pack(pady=15)
 
 start_info = tk.Label(
     start_window,
-    text="Podaj adres startowy trasy:",
+    text="Podaj adres rozpoczęcia trasy:",
     bg="#1E3A5F",
     fg="white",
     font=("Arial", 11, "bold")
 )
 start_info.pack(pady=5)
 
-start_entry = tk.Entry(
+start_frame = tk.Frame(
     start_window,
-    width=40,
-    font=("Arial", 11)
+    bg="#2C4E73",
+    padx=20,
+    pady=15
 )
-start_entry.pack(pady=10)
+start_frame.pack(pady=10)
+
+start_city_label = tk.Label(
+    start_frame,
+    text="Miasto",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 10, "bold")
+)
+start_city_label.pack(pady=3)
+
+start_city_entry = tk.Entry(
+    start_frame,
+    width=35,
+    font=("Arial", 10)
+)
+start_city_entry.pack(pady=3)
+
+start_postal_label = tk.Label(
+    start_frame,
+    text="Kod pocztowy",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 10, "bold")
+)
+start_postal_label.pack(pady=3)
+
+start_postal_entry = tk.Entry(
+    start_frame,
+    width=35,
+    font=("Arial", 10)
+)
+start_postal_entry.pack(pady=3)
+
+start_street_label = tk.Label(
+    start_frame,
+    text="Ulica",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 10, "bold")
+)
+start_street_label.pack(pady=3)
+
+start_street_entry = tk.Entry(
+    start_frame,
+    width=35,
+    font=("Arial", 10)
+)
+start_street_entry.pack(pady=3)
+
+start_number_label = tk.Label(
+    start_frame,
+    text="Numer budynku",
+    bg="#2C4E73",
+    fg="white",
+    font=("Arial", 10, "bold")
+)
+start_number_label.pack(pady=3)
+
+start_number_entry = tk.Entry(
+    start_frame,
+    width=35,
+    font=("Arial", 10)
+)
+start_number_entry.pack(pady=3)
 
 start_button = tk.Button(
     start_window,
