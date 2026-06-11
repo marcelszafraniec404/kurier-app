@@ -61,6 +61,12 @@ def add_address():
         show_package_count()
         set_status("Adres został dodany")
 
+    else:
+        messagebox.showwarning(
+            "Brak danych",
+            "Uzupełnij wszystkie pola adresu dostawy."
+        )
+
 def calculate_distance(point1, point2):
     return sqrt(
         (point1[0] - point2[0]) ** 2 +
