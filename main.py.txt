@@ -60,7 +60,7 @@ def add_address():
 
         show_package_count()
         set_status("Adres został dodany")
-
+        update_route_summary()
     else:
         messagebox.showwarning(
             "Brak danych",
@@ -201,7 +201,7 @@ def delete_address():
         refresh_listbox()
         show_package_count()
         set_status("Adres został usunięty")
-
+        update_route_summary()
     else:
         set_status("Zaznacz adres do usunięcia")
 
@@ -309,6 +309,7 @@ def new_route():
 
         show_package_count()
         set_status("Rozpoczęto nową trasę")
+        update_route_summary()
 
 def set_status(message):
     status_label.config(text=f"Status: {message}")
@@ -326,17 +327,23 @@ def set_start_address():
         start_window.destroy()
         root.deiconify()
         set_status("Adres startowy ustawiony")
+        update_route_summary()
     else:
         messagebox.showwarning(
             "Brak danych",
             "Uzupełnij wszystkie pola adresu startowego."
         )
 
+def update_route_summary():
+    summary_label.config(
+        text=f"Aktualny punkt startowy: {start_address}\nPozostało punktów: {len(addresses)}"
+    )
+
 root = tk.Tk()
 
 root.title("Aplikacja Kuriera")
 
-root.geometry("850x850")
+root.geometry("850x950")
 
 root.resizable(False, False)
 
@@ -659,17 +666,38 @@ scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
 listbox.pack(side=tk.LEFT)
 
+info_frame = tk.Frame(
+    root,
+    bg="#1E3A5F"
+)
+
+info_frame.pack(pady=10)
 
 count_label = tk.Label(
-    root,
+    info_frame,
     text="Liczba paczek: 0",
     bg="#1E3A5F",
     fg="white",
     font=("Arial", 12, "bold")
 )
 
-count_label.pack(pady=15)
+count_label.pack(
+    side=tk.LEFT,
+    padx=25
+)
 
+summary_label = tk.Label(
+    info_frame,
+    text="Aktualny punkt startowy: brak\nPozostało punktów: 0",
+    bg="#1E3A5F",
+    fg="white",
+    font=("Arial", 10, "bold")
+)
+
+summary_label.pack(
+    side=tk.LEFT,
+    padx=25
+)
 
 cursor.execute("""
 SELECT city, postal_code, street, building_number
