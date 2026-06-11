@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f5bcfce50de6eca441b23e2eb172ec48 {
+                #map_c11545cf554f108b44db1cddb237c528 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,14 +54,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_f5bcfce50de6eca441b23e2eb172ec48" ></div>
+            <div class="folium-map" id="map_c11545cf554f108b44db1cddb237c528" ></div>
         
 </body>
 <script>
     
     
-            var map_f5bcfce50de6eca441b23e2eb172ec48 = L.map(
-                "map_f5bcfce50de6eca441b23e2eb172ec48",
+            var map_c11545cf554f108b44db1cddb237c528 = L.map(
+                "map_c11545cf554f108b44db1cddb237c528",
                 {
                     center: [52.2297, 21.0122],
                     crs: L.CRS.EPSG3857,
@@ -78,7 +78,7 @@
 
         
     
-            var tile_layer_752700f455d3652d04ec9cf64c20dd7b = L.tileLayer(
+            var tile_layer_3dff6ebd27582583ff09e4d834c89c8c = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -95,42 +95,85 @@
             );
         
     
-            tile_layer_752700f455d3652d04ec9cf64c20dd7b.addTo(map_f5bcfce50de6eca441b23e2eb172ec48);
+            tile_layer_3dff6ebd27582583ff09e4d834c89c8c.addTo(map_c11545cf554f108b44db1cddb237c528);
         
     
-            var marker_4cd8935812f3f21f2b4b941257a84187 = L.marker(
-                [54.3495195, 18.6481226],
+            var marker_417520363d71c6a624ba366376755648 = L.marker(
+                [52.2737347, 20.9825209],
                 {
 }
-            ).addTo(map_f5bcfce50de6eca441b23e2eb172ec48);
+            ).addTo(map_c11545cf554f108b44db1cddb237c528);
         
     
-            var div_icon_fb8b94467fc2271e57e0cabae8288e1d = L.divIcon({
+            var div_icon_2944d01e05987a9e875de8fbe0bb7fa7 = L.divIcon({
+  "html": "\n                        \u003cdiv style=\"\n                            background-color: #1E3A5F;\n                            color: white;\n                            border: 2px solid #FFD447;\n                            border-radius: 8px;\n                            padding: 5px;\n                            font-weight: bold;\"\u003e\n                            START\n                        \u003c/div\u003e\n                        ",
+  "className": "empty",
+});
+        
+    
+        var popup_4f7bdb5b26d15466f7b9d60c06ac92bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_260fa33e825f55982ff7952c7e42724f = $(`<div id="html_260fa33e825f55982ff7952c7e42724f" style="width: 100.0%; height: 100.0%;">START: Warszawa, Mickiewicza 1</div>`)[0];
+                popup_4f7bdb5b26d15466f7b9d60c06ac92bd.setContent(html_260fa33e825f55982ff7952c7e42724f);
+            
+        
+
+        marker_417520363d71c6a624ba366376755648.bindPopup(popup_4f7bdb5b26d15466f7b9d60c06ac92bd)
+        ;
+
+        
+    
+    
+            marker_417520363d71c6a624ba366376755648.bindTooltip(
+                `<div>
+                     START
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_417520363d71c6a624ba366376755648.setIcon(div_icon_2944d01e05987a9e875de8fbe0bb7fa7);
+            
+    
+            var marker_e335661ebc5c2157bd2af8cf2f4ad325 = L.marker(
+                [52.2430186, 21.0151657],
+                {
+}
+            ).addTo(map_c11545cf554f108b44db1cddb237c528);
+        
+    
+            var div_icon_1205a07e515d22fb731f3a5416fac640 = L.divIcon({
   "html": "\n                        \u003cdiv style=\"\n                            background-color: #FFD447;\n                            color: black;\n                            border: 2px solid black;\n                            border-radius: 50%;\n                            width: 28px;\n                            height: 28px;\n                            text-align: center;\n                            line-height: 28px;\n                            font-weight: bold;\n                            font-size: 14px;\"\u003e\n                            1\n                        \u003c/div\u003e\n                        ",
   "className": "empty",
 });
         
     
-        var popup_f3f6ac5d8fa39303467062b51d5298b7 = L.popup({
+        var popup_9a0b8e945f7302e7498f2036e0cce1be = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_6cf42c924d27f7229bc7d8cb8f0a6217 = $(`<div id="html_6cf42c924d27f7229bc7d8cb8f0a6217" style="width: 100.0%; height: 100.0%;">1. 80-001 Gdańsk, Długa 1</div>`)[0];
-                popup_f3f6ac5d8fa39303467062b51d5298b7.setContent(html_6cf42c924d27f7229bc7d8cb8f0a6217);
+                var html_96a9513137b2912293a4408f8f736c32 = $(`<div id="html_96a9513137b2912293a4408f8f736c32" style="width: 100.0%; height: 100.0%;">1. 00-071 Warszawa, Krakowskie Przedmieście 46</div>`)[0];
+                popup_9a0b8e945f7302e7498f2036e0cce1be.setContent(html_96a9513137b2912293a4408f8f736c32);
             
         
 
-        marker_4cd8935812f3f21f2b4b941257a84187.bindPopup(popup_f3f6ac5d8fa39303467062b51d5298b7)
+        marker_e335661ebc5c2157bd2af8cf2f4ad325.bindPopup(popup_9a0b8e945f7302e7498f2036e0cce1be)
         ;
 
         
     
     
-            marker_4cd8935812f3f21f2b4b941257a84187.bindTooltip(
+            marker_e335661ebc5c2157bd2af8cf2f4ad325.bindTooltip(
                 `<div>
-                     Punkt 1: 80-001 Gdańsk, Długa 1
+                     Punkt 1: 00-071 Warszawa, Krakowskie Przedmieście 46
                  </div>`,
                 {
   "sticky": true,
@@ -138,42 +181,42 @@
             );
         
     
-                marker_4cd8935812f3f21f2b4b941257a84187.setIcon(div_icon_fb8b94467fc2271e57e0cabae8288e1d);
+                marker_e335661ebc5c2157bd2af8cf2f4ad325.setIcon(div_icon_1205a07e515d22fb731f3a5416fac640);
             
     
-            var marker_0dabe233209840949cba5859a422449d = L.marker(
-                [54.3481878, 18.6497253],
+            var marker_6702d46184dec6fc7da8f0a3ab3ffe6e = L.marker(
+                [52.2288207, 21.00316],
                 {
 }
-            ).addTo(map_f5bcfce50de6eca441b23e2eb172ec48);
+            ).addTo(map_c11545cf554f108b44db1cddb237c528);
         
     
-            var div_icon_1208f97dccf6e06338b4683110c7a244 = L.divIcon({
+            var div_icon_1e792bfdfdc5b82418f150373b1cda17 = L.divIcon({
   "html": "\n                        \u003cdiv style=\"\n                            background-color: #FFD447;\n                            color: black;\n                            border: 2px solid black;\n                            border-radius: 50%;\n                            width: 28px;\n                            height: 28px;\n                            text-align: center;\n                            line-height: 28px;\n                            font-weight: bold;\n                            font-size: 14px;\"\u003e\n                            2\n                        \u003c/div\u003e\n                        ",
   "className": "empty",
 });
         
     
-        var popup_bd0f91f1c02900127577d9c092860484 = L.popup({
+        var popup_31a37a1400eca955b07437f178f455a8 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_fe15b02f12f3bb9d2a712cf12c57eb6c = $(`<div id="html_fe15b02f12f3bb9d2a712cf12c57eb6c" style="width: 100.0%; height: 100.0%;">2. 80-830 Gdańsk, Ogarna 15</div>`)[0];
-                popup_bd0f91f1c02900127577d9c092860484.setContent(html_fe15b02f12f3bb9d2a712cf12c57eb6c);
+                var html_bcbae056aaec9efd006871986d17505c = $(`<div id="html_bcbae056aaec9efd006871986d17505c" style="width: 100.0%; height: 100.0%;">2. 00-024 Warszawa, Aleje Jerozolimskie 54</div>`)[0];
+                popup_31a37a1400eca955b07437f178f455a8.setContent(html_bcbae056aaec9efd006871986d17505c);
             
         
 
-        marker_0dabe233209840949cba5859a422449d.bindPopup(popup_bd0f91f1c02900127577d9c092860484)
+        marker_6702d46184dec6fc7da8f0a3ab3ffe6e.bindPopup(popup_31a37a1400eca955b07437f178f455a8)
         ;
 
         
     
     
-            marker_0dabe233209840949cba5859a422449d.bindTooltip(
+            marker_6702d46184dec6fc7da8f0a3ab3ffe6e.bindTooltip(
                 `<div>
-                     Punkt 2: 80-830 Gdańsk, Ogarna 15
+                     Punkt 2: 00-024 Warszawa, Aleje Jerozolimskie 54
                  </div>`,
                 {
   "sticky": true,
@@ -181,42 +224,42 @@
             );
         
     
-                marker_0dabe233209840949cba5859a422449d.setIcon(div_icon_1208f97dccf6e06338b4683110c7a244);
+                marker_6702d46184dec6fc7da8f0a3ab3ffe6e.setIcon(div_icon_1e792bfdfdc5b82418f150373b1cda17);
             
     
-            var marker_7d2e6d727feafc9eda414c198c97fdbc = L.marker(
-                [54.3496567, 18.6518957],
+            var marker_440914becaf461f08f8a5907974bb7bd = L.marker(
+                [52.2250056, 21.028111],
                 {
 }
-            ).addTo(map_f5bcfce50de6eca441b23e2eb172ec48);
+            ).addTo(map_c11545cf554f108b44db1cddb237c528);
         
     
-            var div_icon_6f1b6bfd1b98910771ad5505195132df = L.divIcon({
+            var div_icon_aa2dea9584b6255b6d2160c0043ce27c = L.divIcon({
   "html": "\n                        \u003cdiv style=\"\n                            background-color: #FFD447;\n                            color: black;\n                            border: 2px solid black;\n                            border-radius: 50%;\n                            width: 28px;\n                            height: 28px;\n                            text-align: center;\n                            line-height: 28px;\n                            font-weight: bold;\n                            font-size: 14px;\"\u003e\n                            3\n                        \u003c/div\u003e\n                        ",
   "className": "empty",
 });
         
     
-        var popup_a2b6aae1292fb371bd1a9e1dd51c5168 = L.popup({
+        var popup_695480233f9e288ba0524764d850c7c4 = L.popup({
   "maxWidth": "100%",
 });
 
         
             
-                var html_99575c6dd3f5685e7a43c692938e33dc = $(`<div id="html_99575c6dd3f5685e7a43c692938e33dc" style="width: 100.0%; height: 100.0%;">3. 80-831 Gdańsk, Piwna 24</div>`)[0];
-                popup_a2b6aae1292fb371bd1a9e1dd51c5168.setContent(html_99575c6dd3f5685e7a43c692938e33dc);
+                var html_baf3fc3796ce43c8c1d6b64032f8fceb = $(`<div id="html_baf3fc3796ce43c8c1d6b64032f8fceb" style="width: 100.0%; height: 100.0%;">3. 00-901 Warszawa, Wiejska 4</div>`)[0];
+                popup_695480233f9e288ba0524764d850c7c4.setContent(html_baf3fc3796ce43c8c1d6b64032f8fceb);
             
         
 
-        marker_7d2e6d727feafc9eda414c198c97fdbc.bindPopup(popup_a2b6aae1292fb371bd1a9e1dd51c5168)
+        marker_440914becaf461f08f8a5907974bb7bd.bindPopup(popup_695480233f9e288ba0524764d850c7c4)
         ;
 
         
     
     
-            marker_7d2e6d727feafc9eda414c198c97fdbc.bindTooltip(
+            marker_440914becaf461f08f8a5907974bb7bd.bindTooltip(
                 `<div>
-                     Punkt 3: 80-831 Gdańsk, Piwna 24
+                     Punkt 3: 00-901 Warszawa, Wiejska 4
                  </div>`,
                 {
   "sticky": true,
@@ -224,13 +267,13 @@
             );
         
     
-                marker_7d2e6d727feafc9eda414c198c97fdbc.setIcon(div_icon_6f1b6bfd1b98910771ad5505195132df);
+                marker_440914becaf461f08f8a5907974bb7bd.setIcon(div_icon_aa2dea9584b6255b6d2160c0043ce27c);
             
     
-            var poly_line_41601fd884c1547cd1fa41aed710ad3d = L.polyline(
-                [[54.3495195, 18.6481226], [54.3481878, 18.6497253], [54.3496567, 18.6518957]],
+            var poly_line_e14ace99a49d3c861fdcebb5588e7b01 = L.polyline(
+                [[52.2737347, 20.9825209], [52.2430186, 21.0151657], [52.2288207, 21.00316], [52.2250056, 21.028111]],
                 {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
-            ).addTo(map_f5bcfce50de6eca441b23e2eb172ec48);
+            ).addTo(map_c11545cf554f108b44db1cddb237c528);
         
 </script>
 </html>

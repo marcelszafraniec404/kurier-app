@@ -3,13 +3,14 @@ from tkinter import messagebox
 import sqlite3
 import folium 
 import webbrowser
-
+from math import sqrt
 
 from geopy.geocoders import Nominatim
 
 
 addresses = []
 
+start_address = ""
 
 conn = sqlite3.connect("courier.db")
 cursor = conn.cursor()
@@ -60,13 +61,102 @@ def add_address():
         show_package_count()
         set_status("Adres został dodany")
 
+def calculate_distance(point1, point2):
+    return sqrt(
+        (point1[0] - point2[0]) ** 2 +
+        (point1[1] - point2[1]) ** 2
+    )
+
+def nearest_neighbor_route(start_address, addresses):
+
+    geolocator = Nominatim(user_agent="courier_app", timeout=5)
+
+    try:
+        start_location = geolocator.geocode(start_address)
+
+        if not start_location:
+            return addresses
+
+        current_point = (
+            start_location.latitude,
+            start_location.longitude
+        )
+
+    except Exception:
+        return addresses
+
+    remaining = addresses.copy()
+    ordered_route = []
+
+    while remaining:
+
+        nearest_address = None
+        nearest_distance = float("inf")
+
+        for address in remaining:
+
+            try:
+                location = geolocator.geocode(address)
+
+                if not location:
+                    continue
+
+                point = (
+                    location.latitude,
+                    location.longitude
+                )
+
+                distance = calculate_distance(current_point, point)
+
+                if distance < nearest_distance:
+                    nearest_distance = distance
+                    nearest_address = address
+
+            except Exception:
+                continue
+
+        if nearest_address:
+            ordered_route.append(nearest_address)
+            remaining.remove(nearest_address)
+
+            try:
+                location = geolocator.geocode(nearest_address)
+
+                if location:
+                    current_point = (
+                        location.latitude,
+                        location.longitude
+                    )
+            except Exception:
+                pass
+
+        else:
+            break
+
+    for address in remaining:
+        ordered_route.append(address)
+
+    return ordered_route
+
 def generate_route():
+
+    global addresses
+
+    if not start_address:
+        set_status("Najpierw podaj adres startowy")
+        return
+
+    if not addresses:
+        set_status("Brak adresów do wygenerowania trasy")
+        return
 
     listbox.delete(0, tk.END)
 
-    sorted_addresses = sorted(addresses)
+    ordered_addresses = nearest_neighbor_route(start_address, addresses)
 
-    for index, addr in enumerate(sorted_addresses, start=1):
+    addresses = ordered_addresses
+
+    for index, addr in enumerate(addresses, start=1):
         listbox.insert(tk.END, f"{index}. {addr}")
 
     set_status("Trasa została wygenerowana")
@@ -95,6 +185,36 @@ def show_map():
     )
 
     route_points = []
+
+    if start_address:
+        try:
+            start_location = geolocator.geocode(start_address)
+
+            if start_location:
+                start_point = [start_location.latitude, start_location.longitude]
+                route_points.append(start_point)
+
+                folium.Marker(
+                    start_point,
+                    popup=f"START: {start_address}",
+                    tooltip="START",
+                    icon=folium.DivIcon(
+                        html="""
+                        <div style="
+                            background-color: #1E3A5F;
+                            color: white;
+                            border: 2px solid #FFD447;
+                            border-radius: 8px;
+                            padding: 5px;
+                            font-weight: bold;">
+                            START
+                        </div>
+                        """
+                    )
+                ).add_to(mapa)
+
+        except Exception:
+            set_status("Nie udało się znaleźć adresu startowego")
 
     for index, address in enumerate(addresses, start=1):
         try:
@@ -164,6 +284,21 @@ def new_route():
 def set_status(message):
     status_label.config(text=f"Status: {message}")
 
+def set_start_address():
+    global start_address
+
+    start_address = start_entry.get().strip()
+
+    if start_address:
+        start_window.destroy()
+        root.deiconify()
+        set_status("Adres startowy ustawiony")
+    else:
+        messagebox.showwarning(
+            "Brak adresu",
+            "Podaj adres startowy kuriera."
+        )
+
 root = tk.Tk()
 
 root.title("Aplikacja Kuriera")
@@ -173,6 +308,52 @@ root.geometry("850x850")
 root.resizable(False, False)
 
 root.configure(bg="#1E3A5F")
+
+root.withdraw()
+
+start_window = tk.Toplevel(root)
+start_window.title("Witaj kurierze")
+start_window.geometry("400x220")
+start_window.configure(bg="#1E3A5F")
+start_window.grab_set()
+
+start_title = tk.Label(
+    start_window,
+    text="Witaj kurierze",
+    bg="#1E3A5F",
+    fg="#FFD447",
+    font=("Arial", 18, "bold")
+)
+start_title.pack(pady=15)
+
+start_info = tk.Label(
+    start_window,
+    text="Podaj adres startowy trasy:",
+    bg="#1E3A5F",
+    fg="white",
+    font=("Arial", 11, "bold")
+)
+start_info.pack(pady=5)
+
+start_entry = tk.Entry(
+    start_window,
+    width=40,
+    font=("Arial", 11)
+)
+start_entry.pack(pady=10)
+
+start_button = tk.Button(
+    start_window,
+    text="Rozpocznij pracę",
+    command=set_start_address,
+    bg="#FFD447",
+    fg="black",
+    font=("Arial", 11, "bold"),
+    width=20,
+    height=2,
+    bd=0
+)
+start_button.pack(pady=10)
 
 title_label = tk.Label(
     root,
