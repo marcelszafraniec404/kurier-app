@@ -175,6 +175,8 @@ def refresh_listbox():
 
 def delete_address():
 
+    global start_address
+
     selected = listbox.curselection()
 
     if selected:
@@ -182,6 +184,10 @@ def delete_address():
         index = selected[0]
 
         removed_address = addresses[index]
+
+        if index == 0:
+            start_address = removed_address
+            set_status("Punkt startowy został zaktualizowany")
 
         addresses.pop(index)
 
