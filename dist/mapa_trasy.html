@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ebaa9056f57a8309ebd432171ad30ee3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ebaa9056f57a8309ebd432171ad30ee3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ebaa9056f57a8309ebd432171ad30ee3 = L.map(
+                "map_ebaa9056f57a8309ebd432171ad30ee3",
+                {
+                    center: [52.2297, 21.0122],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cef772c51880f635b461593bd076a3db = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cef772c51880f635b461593bd076a3db.addTo(map_ebaa9056f57a8309ebd432171ad30ee3);
+        
+    
+            var marker_ec43bf4baf3c9b78356e0930b86b9320 = L.marker(
+                [52.2394719, 20.8927208],
+                {
+}
+            ).addTo(map_ebaa9056f57a8309ebd432171ad30ee3);
+        
+    
+            var div_icon_ffb3d4c29bf0df2be805480119ff3e5f = L.divIcon({
+  "html": "\n                        \u003cdiv style=\"\n                            background-color: #1E3A5F;\n                            color: white;\n                            border: 2px solid #FFD447;\n                            border-radius: 8px;\n                            padding: 5px;\n                            font-weight: bold;\"\u003e\n                            START\n                        \u003c/div\u003e\n                        ",
+  "className": "empty",
+});
+        
+    
+        var popup_5f0bbe86b3c6c0fb3dea0799a9f09a4e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a7493c359187ed386dd17ebbfa4ebb9 = $(`<div id="html_6a7493c359187ed386dd17ebbfa4ebb9" style="width: 100.0%; height: 100.0%;">START: 02-495 Warszawa, Warszawska 1</div>`)[0];
+                popup_5f0bbe86b3c6c0fb3dea0799a9f09a4e.setContent(html_6a7493c359187ed386dd17ebbfa4ebb9);
+            
+        
+
+        marker_ec43bf4baf3c9b78356e0930b86b9320.bindPopup(popup_5f0bbe86b3c6c0fb3dea0799a9f09a4e)
+        ;
+
+        
+    
+    
+            marker_ec43bf4baf3c9b78356e0930b86b9320.bindTooltip(
+                `<div>
+                     START
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec43bf4baf3c9b78356e0930b86b9320.setIcon(div_icon_ffb3d4c29bf0df2be805480119ff3e5f);
+            
+    
+            var marker_205ef817e9505ae19e974c271ceba9b0 = L.marker(
+                [52.2109198, 20.9522804],
+                {
+}
+            ).addTo(map_ebaa9056f57a8309ebd432171ad30ee3);
+        
+    
+            var div_icon_740ee93ecd0bbf48b994e5000cffd30c = L.divIcon({
+  "html": "\n                        \u003cdiv style=\"\n                            background-color: #FFD447;\n                            color: black;\n                            border: 2px solid black;\n                            border-radius: 50%;\n                            width: 28px;\n                            height: 28px;\n                            text-align: center;\n                            line-height: 28px;\n                            font-weight: bold;\n                            font-size: 14px;\"\u003e\n                            1\n                        \u003c/div\u003e\n                        ",
+  "className": "empty",
+});
+        
+    
+        var popup_91ba67d55aa18124ef92cce983d02a48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d652cde022a183b5f249df698cdbabee = $(`<div id="html_d652cde022a183b5f249df698cdbabee" style="width: 100.0%; height: 100.0%;">1. 02-222 Warszawa, Aleje Jerozolimskie 181</div>`)[0];
+                popup_91ba67d55aa18124ef92cce983d02a48.setContent(html_d652cde022a183b5f249df698cdbabee);
+            
+        
+
+        marker_205ef817e9505ae19e974c271ceba9b0.bindPopup(popup_91ba67d55aa18124ef92cce983d02a48)
+        ;
+
+        
+    
+    
+            marker_205ef817e9505ae19e974c271ceba9b0.bindTooltip(
+                `<div>
+                     Punkt 1: 02-222 Warszawa, Aleje Jerozolimskie 181
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_205ef817e9505ae19e974c271ceba9b0.setIcon(div_icon_740ee93ecd0bbf48b994e5000cffd30c);
+            
+    
+            var marker_d23f108d03dcc2cee9ccc6c55d3ce2ef = L.marker(
+                [52.2317657, 21.0057979],
+                {
+}
+            ).addTo(map_ebaa9056f57a8309ebd432171ad30ee3);
+        
+    
+            var div_icon_d6652bed28e7391d977b92d863e0b032 = L.divIcon({
+  "html": "\n                        \u003cdiv style=\"\n                            background-color: #FFD447;\n                            color: black;\n                            border: 2px solid black;\n                            border-radius: 50%;\n                            width: 28px;\n                            height: 28px;\n                            text-align: center;\n                            line-height: 28px;\n                            font-weight: bold;\n                            font-size: 14px;\"\u003e\n                            2\n                        \u003c/div\u003e\n                        ",
+  "className": "empty",
+});
+        
+    
+        var popup_3486e08187fe5404d13ca8ebf68ba8da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cadfff2c5457144b15cdbddff7e0493 = $(`<div id="html_9cadfff2c5457144b15cdbddff7e0493" style="width: 100.0%; height: 100.0%;">2. 00-901 Warszawa, Plac Defilad 1</div>`)[0];
+                popup_3486e08187fe5404d13ca8ebf68ba8da.setContent(html_9cadfff2c5457144b15cdbddff7e0493);
+            
+        
+
+        marker_d23f108d03dcc2cee9ccc6c55d3ce2ef.bindPopup(popup_3486e08187fe5404d13ca8ebf68ba8da)
+        ;
+
+        
+    
+    
+            marker_d23f108d03dcc2cee9ccc6c55d3ce2ef.bindTooltip(
+                `<div>
+                     Punkt 2: 00-901 Warszawa, Plac Defilad 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d23f108d03dcc2cee9ccc6c55d3ce2ef.setIcon(div_icon_d6652bed28e7391d977b92d863e0b032);
+            
+    
+            var marker_51b2d11f2b579c9aacf09b0a1de85ac6 = L.marker(
+                [52.2431512, 21.0003446],
+                {
+}
+            ).addTo(map_ebaa9056f57a8309ebd432171ad30ee3);
+        
+    
+            var div_icon_63dd6d7a724e7038d12a5d32f6f398ad = L.divIcon({
+  "html": "\n                        \u003cdiv style=\"\n                            background-color: #FFD447;\n                            color: black;\n                            border: 2px solid black;\n                            border-radius: 50%;\n                            width: 28px;\n                            height: 28px;\n                            text-align: center;\n                            line-height: 28px;\n                            font-weight: bold;\n                            font-size: 14px;\"\u003e\n                            3\n                        \u003c/div\u003e\n                        ",
+  "className": "empty",
+});
+        
+    
+        var popup_43bb1454edf5c135dd007e66889ca207 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0ca76a49e80e2f332477e6e7788de0b = $(`<div id="html_a0ca76a49e80e2f332477e6e7788de0b" style="width: 100.0%; height: 100.0%;">3. 00-950 Warszawa, Plac Bankowy 3</div>`)[0];
+                popup_43bb1454edf5c135dd007e66889ca207.setContent(html_a0ca76a49e80e2f332477e6e7788de0b);
+            
+        
+
+        marker_51b2d11f2b579c9aacf09b0a1de85ac6.bindPopup(popup_43bb1454edf5c135dd007e66889ca207)
+        ;
+
+        
+    
+    
+            marker_51b2d11f2b579c9aacf09b0a1de85ac6.bindTooltip(
+                `<div>
+                     Punkt 3: 00-950 Warszawa, Plac Bankowy 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_51b2d11f2b579c9aacf09b0a1de85ac6.setIcon(div_icon_63dd6d7a724e7038d12a5d32f6f398ad);
+            
+    
+            var poly_line_a186ff8818c1849f286abf58a6a367f4 = L.polyline(
+                [[52.2394719, 20.8927208], [52.2109198, 20.9522804], [52.2317657, 21.0057979], [52.2431512, 21.0003446]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_ebaa9056f57a8309ebd432171ad30ee3);
+        
+</script>
+</html>
